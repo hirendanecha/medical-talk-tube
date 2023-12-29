@@ -80,7 +80,7 @@ export function app(): express.Express {
         var seo: any = {
           title: 'medicaltalk Tube',
           description:
-            'Private video consultations with Naturopathic Doctors and Holistic Healers from around the world. Social Discussion on how to heal various ailments.',
+            'Speak face-to-face with medical doctors locally or worldwide.',
           image:
             'https://video.medicaltalk.tube/assets/banner/HT-banner-default.png',
           site: 'https://video.medicaltalk.tube/',
