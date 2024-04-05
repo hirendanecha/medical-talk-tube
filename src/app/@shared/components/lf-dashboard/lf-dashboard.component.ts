@@ -39,6 +39,7 @@ export class LfDashboardComponent implements OnInit {
   apiUrl = environment.apiUrl;
   channelId: any;
   channelData: any = {};
+  channelList: any = [];
   constructor(
     private route: ActivatedRoute,
     private commonService: CommonService,
@@ -81,6 +82,7 @@ export class LfDashboardComponent implements OnInit {
     if (!this.channelId) {
       this.channelId = +localStorage.getItem('channelId');
     }
+    this.getChannels();
   }
 
   getChannelDetails(value): void {
@@ -140,6 +142,7 @@ export class LfDashboardComponent implements OnInit {
     modalRef.componentInstance.title = `Create Channel`;
     modalRef.componentInstance.confirmButtonLabel = 'Save';
     modalRef.componentInstance.cancelButtonLabel = 'Cancel';
+    modalRef.componentInstance.channelList = this.channelList;
     modalRef.result.then((res) => {
       if (res === 'success') {
       }
@@ -153,10 +156,24 @@ export class LfDashboardComponent implements OnInit {
     });
   }
 
-  getmyChannel() {
-    const unique_link = this.shareService.channelData.unique_link;
+  getmyChannel(link): void {
+    const unique_link = link || this.shareService.channelData.unique_link;
     this.router.navigate([`channel/${unique_link}`], {
       state: { data: unique_link },
+    });
+  }
+
+  getChannels(): void {
+    const userId = JSON.parse(this.authService.getUserData() as any)?.UserID;
+    const apiUrl = `${environment.apiUrl}channels/get-channels/${userId}`;
+    this.commonService.get(apiUrl).subscribe({
+      next: (res) => {
+        this.channelList = res.data;
+        console.log(this.channelList);
+      },
+      error(err) {
+        console.log(err);
+      },
     });
   }
 }
