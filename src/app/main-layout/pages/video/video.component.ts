@@ -633,7 +633,7 @@ export class VideoComponent implements OnInit, OnChanges {
   }
 
   openProfile(Id): void {
-    const url = `https://tube.freedom.buzz/channel/${Id}`;
+    const url = `https://video.medicaltalk.tube/channel/${Id}`;
     window.open(url, '_blank');
   }
 
