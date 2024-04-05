@@ -82,7 +82,7 @@ export function app(): express.Express {
           description:
             'Speak face-to-face with medical doctors locally or worldwide.',
           image:
-            'https://video.medicaltalk.tube/assets/banner/HT-banner-default.png',
+            'https://video.medicaltalk.tube/assets/banner/Medicaltalk-Banner.jpg',
           site: 'https://video.medicaltalk.tube/',
           url: 'https://video.medicaltalk.tube' + params,
           keywords: 'medicaltalk Tube',
